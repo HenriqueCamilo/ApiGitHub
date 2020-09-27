@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvTitlePR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:textColor="#487fb1"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Nome Repositório"/>
+
+    <TextView
+        android:id="@+id/tvDescriptionPR"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:textStyle="bold"
+        android:maxLines="2"
+        app:layout_constraintStart_toStartOf="@+id/tvTitlePR"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitlePR"
+        tools:text="Descrição do repositório lorem ipsum dolor sit amet lorem ipsum dolor" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civAdvisorImagePR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescriptionPR"
+        app:layout_constraintStart_toStartOf="@+id/tvTitlePR"
+        tools:src="@drawable/ic_do_utilizador" />
+
+    <TextView
+        android:id="@+id/tvUserNamePR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:textColor="#487fb1"
+        android:layout_marginStart="10dp"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        app:layout_constraintTop_toTopOf="@id/civAdvisorImagePR"
+        app:layout_constraintStart_toEndOf="@id/civAdvisorImagePR"
+        tools:text="username"/>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#414141"
+        android:layout_marginStart="10dp"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tvUserNamePR"
+        app:layout_constraintStart_toEndOf="@id/civAdvisorImagePR"
+        tools:text="Nome Sobrenome"/>
+
+
+    <View
+        android:id="@+id/vlineItemRepository"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#F7F7F7"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
