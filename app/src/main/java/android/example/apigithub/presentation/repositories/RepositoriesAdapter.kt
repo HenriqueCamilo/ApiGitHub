@@ -36,11 +36,11 @@ class RepositoriesAdapter(private val repositories: List<Repository>) : Recycler
         fun bindView(repository: Repository) {
             title.text = repository.title
             description.text = repository.description
-            userName.text = repository.username
-            name.text = repository.name
+            userName.text = repository.owner.fullName
+            name.text = repository.owner.name
             forks.text = repository.fork.toString()
             star.text = repository.star.toString()
-            image.loadImage(repository.image)
+            image.loadImage(repository.owner.image)
 
 
         }
