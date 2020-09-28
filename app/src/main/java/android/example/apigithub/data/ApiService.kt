@@ -3,10 +3,9 @@ package android.example.apigithub.data
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class ApiService {
+object ApiService {
 
     private fun initRetrofit(): Retrofit{
-
         return Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .addConverterFactory(MoshiConverterFactory.create())
@@ -14,5 +13,5 @@ class ApiService {
     }
 
     val service: GitHubServices = initRetrofit().create(GitHubServices::class.java)
-    
+
 }

@@ -29,7 +29,7 @@ data class RepositoryResultsResponse(
 
 @JsonClass(generateAdapter = true)
 data class Owner(
-    @Json(name = "login")
+    @Json(name = "type")//type
     var name: String,
     @Json(name = "login")
     var fullName: String,

@@ -1,32 +1,48 @@
 package android.example.apigithub.presentation.repositories
 
 import android.example.apigithub.data.ApiService
-import android.example.apigithub.data.model.Owner
 import android.example.apigithub.data.model.Repository
+import android.example.apigithub.data.response.RepositoryBodyResponse
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RepositoriesViewModel: ViewModel() {
 
     val repositoriesLiveData: MutableLiveData<List<Repository>> = MutableLiveData()
 
     fun getRepositories(){
-        //repositoriesLiveData.value = createFakeRepositories()
-        ApiService.service.getRepositories(1).
+        ApiService.service.getRepositories().enqueue(object: Callback<RepositoryBodyResponse>{
+            override fun onResponse(call: Call<RepositoryBodyResponse>, response: Response<RepositoryBodyResponse>){
+                if(response.isSuccessful){
+                    val repositories:MutableList<Repository> = mutableListOf()
 
+                    response.body()?.let{repositoryBodyResponse ->
+                        for(result in repositoryBodyResponse.repositoryResults){
+                            val repository = Repository(
+                                id = result.id,
+                                title = result.title,
+                                description = result.description,
+                                fork = result.forks,
+                                star = result.stars,
+                                name = result.owner.name,
+                                fullName = result.owner.fullName,
+                                image = result.owner.image
+                            )
+                            repositories.add(repository)
+                        }
+                    }
+                    repositoriesLiveData.value = repositories
+                }
+            }
+            override fun onFailure(call: Call<RepositoryBodyResponse>, t: Throwable) {
+
+            }
+        })
     }
 
-    fun createFakeRepositories(): List<Repository> {
-        return listOf(
-            Repository(
-                "123","Title", "descricxao", "henrique", 345, 50,
-                Owner("henrique", "henrique", "https://avatars3.githubusercontent.com/u/30707089?s=60&v=4")
-            ),
-            Repository(
-                "321","Title2", "descricxao2", "henrique2", 444, 30,
-                Owner("henrique", "henrique", "https://avatars3.githubusercontent.com/u/30707089?s=60&v=4")
-            )
-        )
-    }
+
 
 }
