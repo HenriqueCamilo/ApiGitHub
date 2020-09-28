@@ -6,6 +6,9 @@ android {
     compileSdkVersion 29
     buildToolsVersion "30.0.2"
 
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
     defaultConfig {
         applicationId "android.example.apigithub"
         minSdkVersion 19
@@ -23,6 +26,7 @@ android {
         }
     }
 }
+'0.11.0'
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -35,5 +39,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation'io.coil-kt:coil:1.0.0-rc3'
 
 }

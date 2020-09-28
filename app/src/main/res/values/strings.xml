@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">ApiGitHub</string>
-    <string name="main_toolbar">Github JavaPop</string>
+
+    <!-- Repositories -->
+    <string name="toolbar_repositories">Github JavaPop</string>
+
+    <!-- Pull Requests -->
+
+
 
 </resources>
